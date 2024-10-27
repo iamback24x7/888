@@ -1,14 +1,12 @@
-
 <!doctype html>
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" />
   <title>EDU - URL Shortener</title>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link href='/android-chrome-512x512.png' rel='icon' sizes='512x512' type='image/png' />
-
 
 <style>
   * {
@@ -34,7 +32,7 @@
     width: 768px;
   }
   .card-header {
-    background-color: #28a745; /* Green color for header */
+    background-color: #28a745;
     color: white;
   }
   .card-text {
@@ -42,14 +40,14 @@
   }
   .card-text > a {
     text-decoration: none;
-    color: #28a745; /* Green color for links */
+    color: #28a745;
   }
   .card-text > a {
     cursor: pointer;
   }
   .btn-primary {
-    background-color: #28a745; /* Green color for button */
-    border-color: #28a745; /* Green color for button border */
+    background-color: #28a745;
+    border-color: #28a745;
   }
   .form-control {
     cursor: auto;
@@ -69,9 +67,9 @@
 </head>
 <body>
   <div class="card">
-    <h5 class="card-header">🥳 Shorten your URLs !</h5>
+    <h5 class="card-header">🥳 Shorten your URLs!</h5>
     <div class="card-body">
-      <h5 class="card-title">Please enter the long URL to be shortened :</h5>
+      <h5 class="card-title">Please enter the long URL to be shortened:</h5>
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Example: https://example.com/" id="text">
         <div class="input-group-append">
@@ -81,6 +79,7 @@
       <p id="notice">Only shorten education-related URLs.</p>             
     </div>
   </div>
+
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -92,27 +91,28 @@
         </div>
         <div class="modal-body" id="result">No result</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick='copyurl("result")' data-toggle="popover" data-placement="bottom" data-content="Copied!">Copy</button>
+          <button type="button" class="btn btn-primary" onclick='copyurl("result")' id="copyBtn" data-toggle="popover" data-placement="bottom" data-content="Copied!">Copy</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>    
         </div>
       </div>
     </div>
   </div>         
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-  <script src="hhttps://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" ></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" ></script>  
-  <script>
-    let res;
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"></script>  
+<script>
+  let res;
 
 function shorturl() {
   const urlInput = document.querySelector("#text").value;
   if (urlInput === "") {
-    alert("Url cannot be empty!");
+    alert("URL cannot be empty!");
     return;
   }
 
   document.getElementById("searchbtn").disabled = true;
-  document.getElementById("searchbtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
+  document.getElementById("searchbtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Please wait...';
   
   fetch(window.location.pathname, {
     method: 'POST',
@@ -125,7 +125,7 @@ function shorturl() {
       document.getElementById("searchbtn").disabled = false;
       document.getElementById("searchbtn").innerHTML = 'Shorten it';
       if (res.key !== "") {
-        document.getElementById("result").innerHTML = window.location.host + res.key;
+        document.getElementById("result").innerHTML = https://hgm.edu.pl/ + res.key;
       }
       $('#exampleModal').modal('show');
     })
@@ -137,38 +137,23 @@ function shorturl() {
     });
 }
 
-function copyurl(id, attr) {
-  let target = null;
+function copyurl(id) {
+  const target = document.getElementById(id);
+  const range = document.createRange();
+  range.selectNode(target);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
 
-  if (attr) {
-    target = document.createElement('div');
-    target.style.opacity = '0';
-    target.innerText = document.querySelector('#' + id)[attr];
-    document.body.appendChild(target);
-  } else {
-    target = document.querySelector('#' + id);
-  }
-
-  try {
-    let range = document.createRange();
-    range.selectNode(target);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
-    console.log('Copy success');
-  } catch (e) {
-    console.log('Copy error');
-  }
-
-  if (attr) {
-    target.parentElement.removeChild(target);
-  }
+  // Show the "Copied!" popover
+  $('#copyBtn').popover('show');
+  
+  // Hide the popover after 2 seconds
+  setTimeout(() => {
+    $('#copyBtn').popover('hide');
+  }, 2000);
 }
-
-$(function () {
-  $('[data-toggle="popover"]').popover();
-});
-  </script>
+</script>
 </body>
 </html>
