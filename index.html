@@ -125,7 +125,7 @@ function shorturl() {
       document.getElementById("searchbtn").disabled = false;
       document.getElementById("searchbtn").innerHTML = 'Shorten it';
       if (res.key !== "") {
-        document.getElementById("result").innerHTML = https://hgm.edu.pl/ + res.key;
+        document.getElementById("result").innerHTML = window.location.host + res.key;
       }
       $('#exampleModal').modal('show');
     })
