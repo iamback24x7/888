@@ -5,70 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>EDU - URL Shortener</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      cursor: default;
-    }
-    html, body {
-      height: 100%;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-content: center;
-      color: #2a2b2c;
-      background-color: #ebedee;
-      overflow: hidden;
-    }
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+  }
+  html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    color: #2a2b2c;
+    background-color: #ebedee;
+    overflow: hidden;
+  }
+  .card {
+    background-color: transparent;
+    width: 768px;
+  }
+  .card-header {
+    background-color: #28a745; /* Green color for header */
+    color: white;
+  }
+  .card-text {
+    text-align: center;
+  }
+  .card-text > a {
+    text-decoration: none;
+    color: #28a745; /* Green color for links */
+  }
+  .card-text > a {
+    cursor: pointer;
+  }
+  .btn-primary {
+    background-color: #28a745; /* Green color for button */
+    border-color: #28a745; /* Green color for button border */
+  }
+  .form-control {
+    cursor: auto;
+  }
+  @media (max-width: 769px) {
     .card {
-      background-color: transparent;
-      width: 768px;
+      width: 80%;
     }
-    .card-header {
-      background-color: #28a745; /* Green color for header */
-      color: white;
+  }
+  @media (max-width: 420px) {
+    .card {
+      width: 95%;
     }
-    .card-text {
-      text-align: center;
-    }
-    .card-text > a {
-      text-decoration: none;
-      color: #28a745; /* Green color for links */
-    }
-    .card-text > a {
-      cursor: pointer;
-    }
-    .btn-primary {
-      background-color: #28a745; /* Green color for button */
-      border-color: #28a745; /* Green color for button border */
-    }
-    .form-control {
-      cursor: auto;
-    }
-    @media (max-width: 769px) {
-      .card {
-        width: 80%;
-      }
-    }
-    @media (max-width: 420px) {
-      .card {
-        width: 95%;
-      }
-    }
-    @media (prefers-color-scheme: dark) { 
-      body {
-        color: #d9d9d9; 
-        background: #1b1b1b;
-      }
-      .card {
-        background-color: #252d38;
-      }
-    } 
-  </style>
+  }
+</style>
+
 </head>
 <body>
   <div class="card">
