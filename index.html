@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" />
   <title>EDU - URL Shortener</title>
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link href='/android-chrome-512x512.png' rel='icon' sizes='512x512' type='image/png' />
+  <link href='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuljhOBa2L3CJ_PMR0cRVuBxDbA_qNG7pO2MTKvvvKhSVaOG_auiPwiD6XXo_gm4OxPb1cbB1-tu6hdONaBNFO7uFjOFmZfebnVdL50CEtm6D-PvVh-NpY6PkKwNzwaWsbuR9wwWllcDr5dTtcwzDoB6UVIMDY-3XbGrAfpXP6R9lAEa4KgoGdJ82Tsu0k/s512/android-chrome-512x512.png' rel='icon' sizes='512x512' type='image/png' />
 
 <style>
   * {
@@ -125,7 +124,7 @@ function shorturl() {
       document.getElementById("searchbtn").disabled = false;
       document.getElementById("searchbtn").innerHTML = 'Shorten it';
       if (res.key !== "") {
-        document.getElementById("result").innerHTML = window.location.host + res.key;
+        document.getElementById("result").innerHTML = `https://${window.location.host}/${res.key}`;
       }
       $('#exampleModal').modal('show');
     })
